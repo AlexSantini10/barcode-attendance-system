@@ -27,7 +27,7 @@ try:
             user = "5ATL",
             passwd = "sistemi",
             database = "barcode"
-        ) 
+        )  
 
     mycursor = mydb.cursor()
 
