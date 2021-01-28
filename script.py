@@ -36,14 +36,19 @@ try:
 
         lettura = replaceString(lettura)
 
-        query = f"SELECT ID, code FROM data WHERE code={lettura}"
+        query = f"SELECT ID, code FROM anagrafica WHERE codice={lettura}"
         mycursor.execute(query)
         elements = mycursor.fetchall()
 
         if (len(elements)==0):
             print('codice non presente')
         else:
-            print('codice presente')
+            query = f"SELECT * FROM anagrafica WHERE codice={lettura}"
+            mycursor.execute(query)
+            elements = mycursor.fetchall()
+            elements = elements[0]
+
+            
 
             asyncio.run(onOffLed(led))
 except:
