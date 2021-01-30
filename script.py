@@ -1,7 +1,12 @@
-from gpiozero import LED
 import mysql.connector
 from time import sleep
 import asyncio
+import traceback
+
+iAmOnRaspberry = False    # Debug
+
+if iAmOnRaspberry:
+    from gpiozero import LED
 
 def replaceString(lettura):
     lettura = lettura.replace("'", "")
@@ -13,20 +18,22 @@ def replaceString(lettura):
     return lettura
 
 async def onOffLed(led):
-    print('led acceso')
-    led.on()
-    await asyncio.sleep(1)
-    print('led spento')
-    led.off()
+    if iAmOnRaspberry:
+        print('led acceso')
+        led.on()
+        await asyncio.sleep(1)
+        print('led spento')
+        led.off()
             
 try:
-    led = LED(14)
+    if iAmOnRaspberry:
+        led = LED(14)
 
     mydb = mysql.connector.connect(
-            host = "localhost",
-            user = "5ATL",
-            passwd = "sistemi",
-            database = "barcode"
+            host = "lezioni.alberghetti.it",
+            user = "witchers",
+            passwd = "Alberghetti2021",
+            database = "witchers"
         ) 
 
     mycursor = mydb.cursor()
@@ -43,14 +50,27 @@ try:
         if (len(elements)==0):
             print('codice non presente')
         else:
+            # 0 ID, 1 codice, 2 nome, 3 cognome, 4 email, 5 abitazione, 6 insegnante, 7 entrato
             query = f"SELECT * FROM anagrafica WHERE codice={lettura}"
             mycursor.execute(query)
             elements = mycursor.fetchall()
             elements = elements[0]
 
-            
+            if elements[7] == 1:
+                mycursor.execute(f"INSERT INTO log (userID, entrataUscita) VALUES ('{elements[0]}', '{0}')")
+                mydb.commit()
+
+                mycursor.execute(f"UPDATE anagrafica SET entrato='0'")
+                mydb.commit()
+            else:
+                mycursor.execute(f"INSERT INTO log (userID, entrataUscita) VALUES ('{elements[0]}', '{1}')")
+                mydb.commit()
+                mycursor.execute(f"UPDATE anagrafica SET entrato='1'")
+                mydb.commit()
 
             asyncio.run(onOffLed(led))
 except:
-    led.off()
+    print(traceback.print_exc())
+    if iAmOnRaspberry:
+        led.off()
     exit()
