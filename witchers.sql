@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Gen 30, 2021 alle 08:53
--- Versione del server: 10.3.17-MariaDB
--- Versione PHP: 7.2.11
+-- Host: 127.0.0.1
+-- Creato il: Gen 30, 2021 alle 10:03
+-- Versione del server: 10.4.14-MariaDB
+-- Versione PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -44,7 +43,8 @@ CREATE TABLE `anagrafica` (
 --
 
 INSERT INTO `anagrafica` (`ID`, `codice`, `nome`, `cognome`, `email`, `abitazione`, `insegnante`, `entrato`) VALUES
-(1, '1234', 'Alex', 'Santini', 'alexsantini.as@gmail.com', 'Firenzuola', 0, 0);
+(1, '1234', 'Alex', 'Santini', 'alexsantini.as@gmail.com', 'Firenzuola', 0, 0),
+(2, '2345', 'Ebiware', 'Edu', 'bo', 'Imola', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -58,6 +58,18 @@ CREATE TABLE `log` (
   `entrataUscita` tinyint(1) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `log`
+--
+
+INSERT INTO `log` (`ID`, `userID`, `entrataUscita`, `time`) VALUES
+(1, 1, 1, '2021-01-30 09:00:10'),
+(2, 1, 0, '2021-01-30 09:00:50'),
+(3, 1, 1, '2021-01-30 09:01:03'),
+(4, 1, 0, '2021-01-30 09:01:12'),
+(5, 2, 1, '2021-01-30 09:01:48'),
+(6, 2, 0, '2021-01-30 09:01:57');
 
 --
 -- Indici per le tabelle scaricate
@@ -83,13 +95,13 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT per la tabella `anagrafica`
 --
 ALTER TABLE `anagrafica`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `log`
 --
 ALTER TABLE `log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

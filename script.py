@@ -30,9 +30,9 @@ try:
         led = LED(14)
 
     mydb = mysql.connector.connect(
-            host = "lezioni.alberghetti.it",
-            user = "witchers",
-            passwd = "Alberghetti2021",
+            host = "localhost",
+            user = "5ATL",
+            passwd = "sistemi",
             database = "witchers"
         ) 
 
@@ -43,7 +43,7 @@ try:
 
         lettura = replaceString(lettura)
 
-        query = f"SELECT ID, code FROM anagrafica WHERE codice={lettura}"
+        query = f"SELECT ID, codice FROM anagrafica WHERE codice={lettura}"
         mycursor.execute(query)
         elements = mycursor.fetchall()
 
@@ -68,7 +68,8 @@ try:
                 mycursor.execute(f"UPDATE anagrafica SET entrato='1'")
                 mydb.commit()
 
-            asyncio.run(onOffLed(led))
+            if iAmOnRaspberry:
+                asyncio.run(onOffLed(led))
 except:
     print(traceback.print_exc())
     if iAmOnRaspberry:
