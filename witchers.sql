@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 30, 2021 alle 10:03
+-- Creato il: Gen 30, 2021 alle 10:26
 -- Versione del server: 10.4.14-MariaDB
 -- Versione PHP: 7.4.10
 
@@ -71,6 +71,24 @@ INSERT INTO `log` (`ID`, `userID`, `entrataUscita`, `time`) VALUES
 (5, 2, 1, '2021-01-30 09:01:48'),
 (6, 2, 0, '2021-01-30 09:01:57');
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `toupdate`
+--
+
+CREATE TABLE `toupdate` (
+  `ID` int(11) NOT NULL,
+  `isToUpdate` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `toupdate`
+--
+
+INSERT INTO `toupdate` (`ID`, `isToUpdate`) VALUES
+(1, 0);
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -88,6 +106,12 @@ ALTER TABLE `log`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indici per le tabelle `toupdate`
+--
+ALTER TABLE `toupdate`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -102,6 +126,12 @@ ALTER TABLE `anagrafica`
 --
 ALTER TABLE `log`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT per la tabella `toupdate`
+--
+ALTER TABLE `toupdate`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
