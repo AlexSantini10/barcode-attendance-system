@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 28, 2021 alle 08:27
+-- Creato il: Gen 30, 2021 alle 08:53
 -- Versione del server: 10.3.17-MariaDB
 -- Versione PHP: 7.2.11
 
@@ -40,6 +40,26 @@ CREATE TABLE `anagrafica` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dump dei dati per la tabella `anagrafica`
+--
+
+INSERT INTO `anagrafica` (`ID`, `codice`, `nome`, `cognome`, `email`, `abitazione`, `insegnante`, `entrato`) VALUES
+(1, '1234', 'Alex', 'Santini', 'alexsantini.as@gmail.com', 'Firenzuola', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `log`
+--
+
+CREATE TABLE `log` (
+  `ID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `entrataUscita` tinyint(1) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 -- Indici per le tabelle scaricate
 --
 
@@ -50,6 +70,12 @@ ALTER TABLE `anagrafica`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indici per le tabelle `log`
+--
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -57,6 +83,12 @@ ALTER TABLE `anagrafica`
 -- AUTO_INCREMENT per la tabella `anagrafica`
 --
 ALTER TABLE `anagrafica`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT per la tabella `log`
+--
+ALTER TABLE `log`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
