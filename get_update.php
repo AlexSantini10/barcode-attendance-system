@@ -1,7 +1,7 @@
 <?php
     require_once "./conn.db.php";
 
-    $table = 'toUpdate';
+    $table = 'toupdate';
     $myDB=new mysqli($host, $user, $pass, $db);
 	
 	$result = $myDB->query("SELECT * FROM $table");

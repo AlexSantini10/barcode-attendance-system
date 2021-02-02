@@ -24,6 +24,12 @@
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php">Log page</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="users.php">Users page</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="addUser.php">Add an user</a>
+            </li>
         </div>
     </div>
     </nav>

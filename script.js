@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         fetch('./get_nomi.php', { method: 'GET' })
         .then(res => res.json())
         .then(json => {
-
+            //console.log(json)
             table.innerHTML="";
             json.forEach(element => {
                 console.log(element)
