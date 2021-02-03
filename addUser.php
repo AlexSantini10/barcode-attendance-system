@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<?php require_once "./library.php"; ?>
 <?php require_once "./conn.db.php"; ?>
 
 <html lang="en">
@@ -9,8 +10,9 @@
     <title>Barcode System</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="addUser_script.js"> </script>
 </head>
-<body class="bg-dark">
+<body class="bg-dark text-white">
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -52,13 +54,13 @@
             <input type="text" class="form-control" id="abitazione" name="abitazione">
 
             <label for="insegnante">Insegnante</label>
-            <input type="text" class="form-control" id="insegnante" name="insegnante">
+            <input type="text" class="form-control" id="insegnante" name="insegnante" placeholder="Si/No">
 
             <label for="entrato">è nella scuola</label> <!-- (toFinish) inserire parsing tra Si 1 e No 0 --->
-            <input type="text" class="form-control" id="entrato" name="entrato">
+            <input type="text" class="form-control" id="entrato" name="entrato" placeholder="Si/No">
         </div>
         <div class="form-group" style="margin-top:10px;">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary" id='submit'>Submit</button>
         </div>
     </form>
 
@@ -67,10 +69,8 @@
 
     <?php
         if (isset($_POST['codice']) && isset($_POST['nome']) && isset($_POST['cognome']) && isset($_POST['email']) && isset($_POST['abitazione']) && isset($_POST['insegnante']) && isset($_POST['entrato'])){
-            echo("ciao");
             $myDB=new mysqli($host, $user, $pass, $db);
             $query = "INSERT INTO anagrafica (codice, nome, cognome, email, abitazione, insegnante, entrato) VALUES ('{$_POST['codice']}', '{$_POST['nome']}', '{$_POST['cognome']}', '{$_POST['email']}', '{$_POST['abitazione']}', '{$_POST['insegnante']}', '{$_POST['entrato']}')";
-            echo($query);
             $myDB->query($query);
         }
     ?>

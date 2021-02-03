@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Gen 30, 2021 alle 10:26
--- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.4.10
+-- Host: localhost:3306
+-- Creato il: Feb 03, 2021 alle 00:15
+-- Versione del server: 10.3.27-MariaDB-0+deb10u1
+-- Versione PHP: 7.3.19-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -45,6 +44,25 @@ CREATE TABLE `anagrafica` (
 INSERT INTO `anagrafica` (`ID`, `codice`, `nome`, `cognome`, `email`, `abitazione`, `insegnante`, `entrato`) VALUES
 (1, '1234', 'Alex', 'Santini', 'alexsantini.as@gmail.com', 'Firenzuola', 0, 0),
 (2, '2345', 'Ebiware', 'Edu', 'bo', 'Imola', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `deskentratauscita`
+--
+
+CREATE TABLE `deskentratauscita` (
+  `ID` int(11) NOT NULL,
+  `desk` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `deskentratauscita`
+--
+
+INSERT INTO `deskentratauscita` (`ID`, `desk`) VALUES
+(0, 'No'),
+(1, 'Si');
 
 -- --------------------------------------------------------
 
@@ -120,20 +138,16 @@ ALTER TABLE `toupdate`
 --
 ALTER TABLE `anagrafica`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT per la tabella `log`
 --
 ALTER TABLE `log`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT per la tabella `toupdate`
 --
 ALTER TABLE `toupdate`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

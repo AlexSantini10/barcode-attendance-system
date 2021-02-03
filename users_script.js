@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 codice.innerHTML = '' + element.codice;
                 tr.appendChild(codice)
 
-                let nome = document.createElement('th');
+                let nome = document.createElement('td');
                 nome.innerHTML = '' + element.nome;
                 tr.appendChild(nome)
 
@@ -48,6 +48,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 let entrato = document.createElement('td');
                 entrato.innerHTML = '' + element.entrato == '1' ? 'Si' : 'No';
                 tr.appendChild(entrato);
+
+                let rimuovi = document.createElement('th');
+                rimuovi.innerHTML = 'X';
+                rimuovi.id = element.ID;
+                tr.appendChild(rimuovi);
+
+                let modifica = document.createElement('th');
+                modifica.innerHTML = 'X';
+                modifica.id = element.ID;
+                tr.appendChild(modifica);
             });
 
         })
