@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         .then(json => {
 
             table.innerHTML="";
+            console.log("reload/load");
             json.forEach(element => {
-                console.log(element)
+                //console.log(element)
                 let tr = document.createElement('tr');
 
                 table.appendChild(tr);
@@ -48,10 +49,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         fetch('./get_update.php', {method:'GET'})
         .then(res => res.json())
         .then(json => {
+            console.log(json[0].isToUpdate);
             if(json[0].isToUpdate==1){
-                relLog()
+                relLog();
+                console.log("qui");
 
-                setUpdated()
+                setUpdated();
             }
         })
         .catch(err => console.log(err));

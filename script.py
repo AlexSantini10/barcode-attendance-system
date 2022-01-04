@@ -31,8 +31,8 @@ try:
 
     mydb = mysql.connector.connect(
             host = "localhost",
-            user = "5ATL",
-            passwd = "sistemi",
+            user = "root",
+            passwd = "",
             database = "witchers"
         ) 
 
@@ -46,6 +46,9 @@ try:
         query = f"SELECT ID, codice FROM anagrafica WHERE codice={lettura}"
         mycursor.execute(query)
         elements = mycursor.fetchall()
+
+        mycursor.execute(f"UPDATE toupdate SET isToUpdate='1'")
+        mydb.commit()
 
         if (len(elements)==0):
             print('codice non presente')
