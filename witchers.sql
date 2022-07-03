@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 30, 2021 alle 10:26
--- Versione del server: 10.4.14-MariaDB
--- Versione PHP: 7.4.10
+-- Creato il: Lug 03, 2022 alle 12:12
+-- Versione del server: 10.4.24-MariaDB
+-- Versione PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,6 +49,25 @@ INSERT INTO `anagrafica` (`ID`, `codice`, `nome`, `cognome`, `email`, `abitazion
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `deskentratauscita`
+--
+
+CREATE TABLE `deskentratauscita` (
+  `ID` int(11) NOT NULL,
+  `desk` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `deskentratauscita`
+--
+
+INSERT INTO `deskentratauscita` (`ID`, `desk`) VALUES
+(0, 'uscita'),
+(1, 'entrata');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `log`
 --
 
@@ -69,7 +88,11 @@ INSERT INTO `log` (`ID`, `userID`, `entrataUscita`, `time`) VALUES
 (3, 1, 1, '2021-01-30 09:01:03'),
 (4, 1, 0, '2021-01-30 09:01:12'),
 (5, 2, 1, '2021-01-30 09:01:48'),
-(6, 2, 0, '2021-01-30 09:01:57');
+(6, 2, 0, '2021-01-30 09:01:57'),
+(7, 1, 1, '2022-07-03 09:43:28'),
+(8, 1, 0, '2022-07-03 09:44:03'),
+(9, 1, 1, '2022-07-03 10:11:54'),
+(10, 1, 0, '2022-07-03 10:12:06');
 
 -- --------------------------------------------------------
 
@@ -100,6 +123,12 @@ ALTER TABLE `anagrafica`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indici per le tabelle `deskentratauscita`
+--
+ALTER TABLE `deskentratauscita`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indici per le tabelle `log`
 --
 ALTER TABLE `log`
@@ -125,7 +154,7 @@ ALTER TABLE `anagrafica`
 -- AUTO_INCREMENT per la tabella `log`
 --
 ALTER TABLE `log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT per la tabella `toupdate`
