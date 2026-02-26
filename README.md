@@ -1,4 +1,4 @@
-# Barcode System 🔖
+# Barcode Attendance System 🔖
 
 Sistema di rilevamento presenze tramite lettore di codici a barre, sviluppato come progetto scolastico per i corsi di **Sistemi e Reti** e **TPSIT**.
 
